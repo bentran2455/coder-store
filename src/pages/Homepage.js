@@ -6,7 +6,6 @@ import ProductSort from "../components/ProductSort";
 import ProductList from "../components/ProductList";
 import { FormProvider } from "../components/form";
 import { useForm } from "react-hook-form";
-import apiService from "../app/apiService";
 import orderBy from "lodash/orderBy";
 import LoadingScreen from "../components/LoadingScreen";
 
@@ -104,12 +103,12 @@ function applyFilter(products, filters) {
   }
 
   // FILTER PRODUCTS
-  if (filters.gender.length > 0) {
+  if (filters.gender && filters.gender.length > 0) {
     filteredProducts = products.filter((product) =>
       filters.gender.includes(product.gender)
     );
   }
-  if (filters.category !== "All") {
+  if (filters.category && filters.category !== "All") {
     filteredProducts = products.filter(
       (product) => product.category === filters.category
     );
